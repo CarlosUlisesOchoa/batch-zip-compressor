@@ -31,6 +31,8 @@ def compress_and_protect_files(env_vars):
     for filename in os.listdir(input_dir):
         print(f"Compressing file: {filename}")
         input_filepath = os.path.join(input_dir, filename)
+        # remove original extension from filename
+        filename = os.path.splitext(filename)[0]
         output_filepath = os.path.join(output_dir, f"{filename}.zip")
         
         pyminizip.compress(input_filepath, None, output_filepath, password, int(0))
